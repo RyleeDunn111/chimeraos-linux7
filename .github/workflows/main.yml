@@ -2,7 +2,7 @@ name: System image build
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  BUILDER_IMAGE_NAME: ${{ github.repository_owner }}/builder
 
 on:
   push:
@@ -46,7 +46,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.BUILDER_IMAGE_NAME }}
       - name: Build packages
         run: |
           docker pull ${{ steps.meta.outputs.tags }}
@@ -73,7 +73,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.BUILDER_IMAGE_NAME }}
       - name: Build packages
         run: |
           docker pull ${{ steps.meta.outputs.tags }}
