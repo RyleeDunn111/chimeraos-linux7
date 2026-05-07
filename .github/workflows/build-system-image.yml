@@ -36,7 +36,7 @@ jobs:
           df -h
       - name: Install dependencies
         run: sudo snap install oras --classic
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v5
