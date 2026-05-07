@@ -30,9 +30,6 @@ RUN echo -e "keyserver-options auto-key-retrieve" >> /etc/pacman.d/gnupg/gpg.con
   su - build -c "cd /tmp/pikaur && makepkg -f" && \
   pacman --noconfirm -U /tmp/pikaur/pikaur-*.pkg.tar.zst
 
-# workaround for failing python-pyglet build required by chimera package
-RUN pacman --noconfirm -U https://archive.archlinux.org/packages/p/python-flit-core/python-flit-core-3.12.0-4-any.pkg.tar.zst
-
 # Auto add PGP keys for users
 RUN mkdir -p /etc/gnupg/ && echo -e "keyserver-options auto-key-retrieve" >> /etc/gnupg/gpg.conf
 
@@ -50,6 +47,9 @@ COPY manifest /manifest
 RUN source /manifest && \
   echo "Server=https://archive.archlinux.org/repos/${ARCHIVE_DATE}/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist && \
   pacman --noconfirm -Syyuu; if [ -n "${PACKAGE_OVERRIDES}" ]; then wget --directory-prefix=/tmp/extra_pkgs ${PACKAGE_OVERRIDES}; pacman --noconfirm -U --overwrite '*' /tmp/extra_pkgs/*; rm -rf /tmp/extra_pkgs; fi
+
+# workaround for failing python-pyglet build required by chimera package
+RUN pacman --noconfirm -U https://archive.archlinux.org/packages/p/python-flit-core/python-flit-core-3.12.0-4-any.pkg.tar.zst
 
 USER build
 ENV BUILD_USER="build"
