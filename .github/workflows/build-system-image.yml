@@ -64,8 +64,9 @@ jobs:
         env:
           ARTIFACT_IMAGE_NAME: ${{ env.ARTIFACT_IMAGE_NAME }}
         run: |
+            cd output
             oras login --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} ${{ env.REGISTRY }}
-            oras push ${{ env.REGISTRY }}/${ARTIFACT_IMAGE_NAME,,}:${{ steps.build_image.outputs.version }} output/${{ steps.build_image.outputs.image_filename }}
+            oras push ${{ env.REGISTRY }}/${ARTIFACT_IMAGE_NAME,,}:${{ steps.build_image.outputs.version }} ${{ steps.build_image.outputs.image_filename }}
       - name: Create release
         id: create_release
         uses: softprops/action-gh-release@v2
