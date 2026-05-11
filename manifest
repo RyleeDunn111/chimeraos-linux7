@@ -100,6 +100,7 @@ export PACKAGES="\
 	libretro-nestopia \
 	libretro-picodrive \
 	libretro-ppsspp \
+	libretro-shaders-slang \
 	libretro-snes9x \
 	libxcrypt-compat \
 	libxss \
@@ -111,6 +112,7 @@ export PACKAGES="\
 	loupe \
 	lshw \
 	mangohud \
+	mesa-demos \
 	modemmanager \
 	nano \
 	nautilus \
@@ -188,6 +190,7 @@ export AUR_PACKAGES="\
 	evdev-keepalive \
 	frzr \
 	gamescope-session-steam-git \
+	gamescope-session-steam-plus-git \
 	gpd-fan-driver-dkms-git \
 	hhfc-git \
 	hid-msi-claw-dkms-git \
@@ -201,6 +204,8 @@ export AUR_PACKAGES="\
 	linux-firmware-valve \
 	kanit-font \
 	nintendo-udev \
+	opengamepadui-bin \
+	opengamepadui-session-git \
 	pikaur \
 	powerstation-bin \
 	python-gbopyrator \
