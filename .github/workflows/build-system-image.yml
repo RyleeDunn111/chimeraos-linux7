@@ -67,6 +67,7 @@ jobs:
             cd output
             oras login --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} ${{ env.REGISTRY }}
             oras push ${{ env.REGISTRY }}/${ARTIFACT_IMAGE_NAME,,}:${{ steps.build_image.outputs.version }} ${{ steps.build_image.outputs.image_filename }}
+            oras tag  ${{ env.REGISTRY }}/${ARTIFACT_IMAGE_NAME,,}:${{ steps.build_image.outputs.version }} unstable
       - name: Create release
         id: create_release
         uses: softprops/action-gh-release@v2
