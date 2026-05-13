@@ -1,0 +1,3 @@
+[submodule "aur-pkgs/linux-chimeraos"]
+	path = aur-pkgs/linux-chimeraos
+	url = https://github.com/RyleeDunn111/linux7-chimeraos.git

@@ -10,8 +10,8 @@ export WEBSITE="https://chimeraos.org"
 export DOCUMENTATION_URL="https://chimeraos.org/about"
 export BUG_REPORT_URL="https://github.com/ChimeraOS/chimeraos/issues"
 
-export KERNEL_PACKAGE="linux"
-export KERNEL_PACKAGE_ORIGIN="repo"
+export KERNEL_PACKAGE="linux-chimeraos"
+export KERNEL_PACKAGE_ORIGIN="aur"
 
 export PACKAGES="\
 	accountsservice \
@@ -179,6 +179,7 @@ export PACKAGES="\
 # Which is often the same as the package name but it can be different.
 # Check on the AUR webpage if you are unsure
 export AUR_PACKAGES="\
+	linux-chimeraos \
 	asusctl \
 	ayaneo-platform-dkms-git \
 	ayn-platform-dkms-git \
